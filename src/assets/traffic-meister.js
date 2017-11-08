@@ -98,6 +98,7 @@ var trafficMeister;
     }
     setTimeout(function() {
       if (Math.floor(Math.random() * 20) === 2) {
+      // if (1 === 1) {
         cb('Fetch data error')
       } else {
         cb(null, data);

@@ -1,3 +1,23 @@
-<p>
-  home-page works!
-</p>
+<mat-form-field>
+  <mat-select placeholder="Color" [disabled]="colorSelectDisabled">
+    <mat-option *ngFor="let color of colors" [value]="color">
+      {{ color }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field >
+  <mat-select placeholder="Brand" [disabled]="brandSelectDisabled" >
+    <mat-option *ngFor="let brand of brands" [value]="brand">
+      {{ brand }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field>
+  <mat-select placeholder="Type" [disabled]="typeSelectDisabled">
+    <mat-option *ngFor="let type of types" [value]="type">
+      {{ type }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
