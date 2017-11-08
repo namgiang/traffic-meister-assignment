@@ -1,10 +1,18 @@
-<mat-grid-list cols="3" rowHeight="fit" gutterSize="4">
+<mat-grid-list cols="3" rowHeight="fit" gutterSize="10">
   <mat-grid-tile
       [colspan]="3"
       [rowspan]="2"
       class="app-grid-tile">
-      <!-- <h1 class="title">TRAFFICMEISTER</h1> -->
+      <div class="header">
+        <div class="header--title">
+          <img src="assets/images/trafikmeister.svg" alt="TrafficMeister">
+        </div>
+        <div class="header--logo">
+          <img src="assets/images/train.svg" alt="Train">
+        </div>
+      </div>
   </mat-grid-tile>
+
   <mat-grid-tile
       [colspan]="2"
       [rowspan]="8"
@@ -45,6 +53,7 @@
         </mat-form-field>
       </div>
   </mat-grid-tile>
+
   <mat-grid-tile
       [colspan]="1"
       [rowspan]="8"

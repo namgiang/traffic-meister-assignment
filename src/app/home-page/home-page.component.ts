@@ -18,7 +18,9 @@ export class HomePageComponent implements OnInit {
   brandSelectDisabled: boolean = true;
   typeSelectDisabled: boolean = true;
 
-  constructor(private tdService: TrafficDataService) { }
+  constructor(
+    public tdService: TrafficDataService,
+    public snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.getColors();
@@ -61,7 +63,9 @@ export class HomePageComponent implements OnInit {
   }
 
   displayError(error: string){
-    console.log(error);
+    this.snackBar.open(error, 'OK', {
+      duration: 6000,
+    });
   }
 
   onTypeChange(type) {
