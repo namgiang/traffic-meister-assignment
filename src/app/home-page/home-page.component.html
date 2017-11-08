@@ -1,23 +1,41 @@
-<mat-form-field>
-  <mat-select placeholder="Color" [disabled]="colorSelectDisabled">
-    <mat-option *ngFor="let color of colors" [value]="color">
-      {{ color }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field >
-  <mat-select placeholder="Brand" [disabled]="brandSelectDisabled" >
-    <mat-option *ngFor="let brand of brands" [value]="brand">
-      {{ brand }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-<mat-form-field>
-  <mat-select placeholder="Type" [disabled]="typeSelectDisabled">
-    <mat-option *ngFor="let type of types" [value]="type">
-      {{ type }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+<mat-grid-list cols="3" rowHeight="fit" gutterSize="4">
+  <mat-grid-tile
+      [colspan]="3"
+      [rowspan]="2"
+      class="app-grid-tile">
+      <!-- <h1 class="title">TRAFFICMEISTER</h1> -->
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="2"
+      [rowspan]="8"
+      class="app-grid-tile">
+      <div class="dropdowns">
+        <mat-form-field>
+          <mat-select placeholder="Vehicle" [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled">
+            <mat-option *ngFor="let type of types" [value]="type">
+              {{ type }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Brand" [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled" >
+            <mat-option *ngFor="let brand of brands" [value]="brand">
+              {{ brand }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Color" [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled">
+            <mat-option *ngFor="let color of colors" [value]="color">
+              {{ color }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+  </mat-grid-tile>
+  <mat-grid-tile
+      [colspan]="1"
+      [rowspan]="8"
+      class="app-grid-tile">
+  </mat-grid-tile>
+</mat-grid-list>

@@ -17,7 +17,7 @@ export class TrafficDataService {
 
   constructor() {}
 
-  getFetchDataObservable(): Observable<ITrafficData[]> {
+  getFetchDataObservable(): Observable<{}> {
     return Observable.bindNodeCallback(trafficMeister.fetchData)();
   }
 
@@ -28,7 +28,7 @@ export class TrafficDataService {
     });
   }
 
-  fetchTypes(): Observable<string[]> {
+  fetchTypes(): Observable<{}[]> {
     return this.getFetchDataObservable().map((data) => {
       if (typeof data === 'string') throw {data};
       let types = new Set(Array.prototype.map.call(data, item => item.type));

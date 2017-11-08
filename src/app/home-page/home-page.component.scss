@@ -1,0 +1,21 @@
+.app-grid-tile {
+  background-color: white;
+}
+
+mat-grid-list {
+  height: 92vh;
+}
+
+mat-grid-tile {
+  outline: 4px solid gray;
+  outline-offset: -16px;
+}
+
+.title {
+  font-size: 2.8rem;
+}
+
+.dropdowns {
+  display: flex;
+  flex-direction: column;
+}
