@@ -20,6 +20,7 @@
       <div class="dropdowns">
         <mat-form-field>
           <mat-select
+            id="type-dropdown"
             placeholder="Vehicle"
             [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
             [(ngModel)]="selectedType"
@@ -31,6 +32,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select
+            id="brand-dropdown"
             placeholder="Brand"
             [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
             [(ngModel)]="selectedBrand"
@@ -42,6 +44,7 @@
         </mat-form-field>
         <mat-form-field>
           <mat-select
+            id="color-dropdown"
             placeholder="Color"
             [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
             [(ngModel)]="selectedColor"

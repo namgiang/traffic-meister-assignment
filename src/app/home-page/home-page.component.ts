@@ -69,16 +69,22 @@ export class HomePageComponent implements OnInit {
   }
 
   onTypeChange(type) {
+    this.brandSelectDisabled = true;
+    this.colorSelectDisabled = true;
     this.getBrands(this.selectedColor, type);
     this.filterColors(this.selectedBrand, type);
   }
 
   onBrandChange(brand) {
+    this.colorSelectDisabled = true;
+    this.typeSelectDisabled = true;
     this.getTypes(brand, this.selectedColor);
     this.filterColors(brand, this.selectedType);
   }
 
   onColorChange(color) {
+    this.brandSelectDisabled = true;
+    this.typeSelectDisabled = true;
     this.getBrands(color, this.selectedType);
     this.getTypes(this.selectedBrand, color);
   }

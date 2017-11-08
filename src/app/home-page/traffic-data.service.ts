@@ -15,8 +15,6 @@ interface ITrafficData {
 @Injectable()
 export class TrafficDataService {
 
-  constructor() {}
-
   getFetchDataObservable(): Observable<{}> {
     return Observable.bindNodeCallback(trafficMeister.fetchData)();
   }
