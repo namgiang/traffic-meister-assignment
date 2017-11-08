@@ -11,21 +11,33 @@
       class="app-grid-tile">
       <div class="dropdowns">
         <mat-form-field>
-          <mat-select placeholder="Vehicle" [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled">
+          <mat-select
+            placeholder="Vehicle"
+            [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
+            [(ngModel)]="selectedType"
+            (ngModelChange)="onTypeChange($event)">
             <mat-option *ngFor="let type of types" [value]="type">
               {{ type }}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Brand" [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled" >
+          <mat-select
+            placeholder="Brand"
+            [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
+            [(ngModel)]="selectedBrand"
+            (ngModelChange)="onBrandChange($event)" >
             <mat-option *ngFor="let brand of brands" [value]="brand">
               {{ brand }}
             </mat-option>
           </mat-select>
         </mat-form-field>
         <mat-form-field>
-          <mat-select placeholder="Color" [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled">
+          <mat-select
+            placeholder="Color"
+            [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
+            [(ngModel)]="selectedColor"
+            (ngModelChange)="onColorChange($event)">
             <mat-option *ngFor="let color of colors" [value]="color">
               {{ color }}
             </mat-option>
