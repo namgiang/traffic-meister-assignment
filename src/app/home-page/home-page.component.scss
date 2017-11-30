@@ -1,22 +1,19 @@
-.app-grid-tile {
+$dropdownWidth: 60vw;
+
+.page-header, .dropdowns-container, .vehicle-list {
   background-color: white;
-}
-
-.mat-grid-list {
-  height: 92vh;
-}
-
-.mat-grid-tile {
   box-sizing: border-box;
   outline: 4px solid gray;
   outline-offset: -3vh;
+  position: fixed;
   padding: 3vh;
 }
 
-.header {
+.page-header {
   display: flex;
   align-items: center;
-  width: 100%;
+  width: 94vw;
+  height: 18.4vh;
 }
 
 .header--title {
@@ -31,7 +28,26 @@
   margin-right: 2.9vh;
 }
 
+.dropdowns-container {
+  display: flex;
+  height: 75.6vh;
+  top: 22.4vh;
+  width: $dropdownWidth;
+  align-items: center;
+  justify-content: center;
+}
+
 .dropdowns {
   display: flex;
   flex-direction: column;
+  width: 80%;
+}
+
+.vehicle-list {
+  position: fixed;
+  height: 100%;
+  width: 90vw - $dropdownWidth;
+  top: 22.4vh;
+  left: $dropdownWidth + 6vw;
+  overflow-y: auto;
 }

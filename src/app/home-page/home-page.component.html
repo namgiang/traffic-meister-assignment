@@ -1,65 +1,65 @@
-<mat-grid-list cols="3" rowHeight="fit" gutterSize="10">
-  <mat-grid-tile
-      [colspan]="3"
-      [rowspan]="2"
-      class="app-grid-tile">
-      <div class="header">
-        <div class="header--title">
-          <img src="assets/images/trafikmeister.svg" alt="TrafficMeister">
+<div class='page-container'>
+  <header class="page-header">
+    <div class="header--title">
+      <img src="assets/images/trafikmeister.svg" alt="TrafficMeister">
+    </div>
+    <div class="header--logo">
+      <img src="assets/images/train.svg" alt="Train">
+    </div>
+  </header>
+  <section class="page-content">
+    <div class="dropdowns-container">
+     <div class="dropdowns">
+          <mat-form-field>
+            <mat-select
+              id="type-dropdown"
+              placeholder="Vehicle"
+              [disabled]="dropDownDisabled"
+              [(ngModel)]="selectedType"
+              (ngModelChange)="onFilterChange($event)">
+              <mat-option *ngFor="let type of types" [value]="type">
+                {{ type }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select
+              id="brand-dropdown"
+              placeholder="Brand"
+              [disabled]="dropDownDisabled"
+              [(ngModel)]="selectedBrand"
+              (ngModelChange)="onFilterChange($event)" >
+              <mat-option *ngFor="let brand of brands" [value]="brand">
+                {{ brand }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field>
+            <mat-select
+              id="color-dropdown"
+              placeholder="Color"
+              [disabled]="dropDownDisabled"
+              [(ngModel)]="selectedColor"
+              (ngModelChange)="onFilterChange($event)">
+              <mat-option *ngFor="let color of colors" [value]="color">
+                {{ color }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
         </div>
-        <div class="header--logo">
-          <img src="assets/images/train.svg" alt="Train">
-        </div>
-      </div>
-  </mat-grid-tile>
+    </div>
 
-  <mat-grid-tile
-      [colspan]="2"
-      [rowspan]="8"
-      class="app-grid-tile">
-      <div class="dropdowns">
-        <mat-form-field>
-          <mat-select
-            id="type-dropdown"
-            placeholder="Vehicle"
-            [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
-            [(ngModel)]="selectedType"
-            (ngModelChange)="onTypeChange($event)">
-            <mat-option *ngFor="let type of types" [value]="type">
-              {{ type }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select
-            id="brand-dropdown"
-            placeholder="Brand"
-            [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
-            [(ngModel)]="selectedBrand"
-            (ngModelChange)="onBrandChange($event)" >
-            <mat-option *ngFor="let brand of brands" [value]="brand">
-              {{ brand }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field>
-          <mat-select
-            id="color-dropdown"
-            placeholder="Color"
-            [disabled]="typeSelectDisabled || brandSelectDisabled || colorSelectDisabled"
-            [(ngModel)]="selectedColor"
-            (ngModelChange)="onColorChange($event)">
-            <mat-option *ngFor="let color of colors" [value]="color">
-              {{ color }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  </mat-grid-tile>
-
-  <mat-grid-tile
-      [colspan]="1"
-      [rowspan]="8"
-      class="app-grid-tile">
-  </mat-grid-tile>
-</mat-grid-list>
+    <section class="vehicle-list">
+        <mat-list>
+          <mat-list-item *ngFor="let vehicle of vehicles">
+            <img matListAvatar src="{{vehicle.img}}" (error)="this.src='src/assets/images/default-img.jpeg';" alt="vehicle image {{vehicle.id}}">
+            <h3 matLine> {{vehicle.brand}} </h3>
+            <p matLine> {{vehicle.type}} </p>
+            <p matLine>
+              <span *ngFor="let color of vehicle.colors"> {{color}} </span>
+            </p>
+          </mat-list-item>
+        </mat-list>
+    </section>
+  </section>
+</div>

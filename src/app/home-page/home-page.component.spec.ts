@@ -57,9 +57,7 @@ describe('HomePageComponent', () => {
   });
 
   it('should enable all the dropdowns when finish fetching data', fakeAsync(() => {
-    component.getTypes();
-    component.getBrands();
-    component.getColors();
+    component.getData();
     tick();
     fixture.detectChanges();
     let compiled = fixture.debugElement.nativeElement;

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TrafficDataService } from './traffic-data.service';
 import { MatSnackBar } from '@angular/material';
 
+import { Vehicle } from './vehicle.model';
+
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -14,52 +16,36 @@ export class HomePageComponent implements OnInit {
   selectedType: string;
   selectedBrand: string;
   selectedColor: string;
-  colorSelectDisabled: boolean = true;
-  brandSelectDisabled: boolean = true;
-  typeSelectDisabled: boolean = true;
+  dropDownDisabled: boolean = true;
+  vehicles: Vehicle[] = [];
 
   constructor(
     public tdService: TrafficDataService,
     public snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.getColors();
-    this.getBrands();
-    this.getTypes();
-  }
-
-  getBrands(color?: string, type?: string) {
-    this.tdService.fetchBrands(color, type).subscribe(
-      (data: string[]) => {
-        this.brands = data;
-        this.brandSelectDisabled = false;
-      },
-      error => this.displayError(error)
-    );
-  }
-
-  getTypes(brand?: string, color?: string) {
-    this.tdService.fetchTypes(brand, color).subscribe(
-      (data: string[]) => {
-        this.types = data;
-        this.typeSelectDisabled = false;
-      },
-      error => this.displayError(error)
-    );
-  }
-
-  getColors() {
+    this.getData();
     this.colors = this.tdService.fetchColors();
-    this.colorSelectDisabled = false;
   }
 
-  filterColors(brand: string, type: string) {
-    this.tdService.fetchFilteredColors(brand, type).subscribe(
-      (data: string[]) => {
-      this.colors = data;
-      this.colorSelectDisabled = false;
-    },
-    error => this.displayError(error))
+  getData(brand?: string, color?: string, type?: string) {
+    this.tdService.fetchData(brand, color, type).subscribe(
+      (data: Vehicle[]) => {
+        this.vehicles = data;
+
+        this.brands = data.map(item => item.brand);
+
+        let types = new Set(data.map(item => item.type));
+        this.types = Array.from(types);
+
+        if (this.colors.length !== 0) {
+          let colors = data.reduce((arr, item) => arr.concat(...item.colors), []);
+          this.colors =  Array.from(new Set(colors));
+        }
+        this.dropDownDisabled = false;
+      },
+      error => this.displayError(error)
+    );
   }
 
   displayError(error: string){
@@ -68,25 +54,9 @@ export class HomePageComponent implements OnInit {
     });
   }
 
-  onTypeChange(type) {
-    this.brandSelectDisabled = true;
-    this.colorSelectDisabled = true;
-    this.getBrands(this.selectedColor, type);
-    this.filterColors(this.selectedBrand, type);
-  }
-
-  onBrandChange(brand) {
-    this.colorSelectDisabled = true;
-    this.typeSelectDisabled = true;
-    this.getTypes(brand, this.selectedColor);
-    this.filterColors(brand, this.selectedType);
-  }
-
-  onColorChange(color) {
-    this.brandSelectDisabled = true;
-    this.typeSelectDisabled = true;
-    this.getBrands(color, this.selectedType);
-    this.getTypes(this.selectedBrand, color);
+  onFilterChange() {
+    this.dropDownDisabled = true;
+    this.getData(this.selectedBrand, this.selectedColor, this.selectedType);
   }
 
 }
