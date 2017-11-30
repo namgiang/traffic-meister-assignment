@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatListModule } from '@angular/material/list';
+import { MatCardModule } from '@angular/material/card';
 
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -23,7 +23,7 @@ import { TrafficDataService } from './home-page/traffic-data.service';
     MatGridListModule,
     FormsModule,
     MatSnackBarModule,
-    MatListModule
+    MatCardModule
   ],
   providers: [TrafficDataService],
   bootstrap: [AppComponent]

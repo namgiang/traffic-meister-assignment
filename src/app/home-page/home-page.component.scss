@@ -1,19 +1,22 @@
-$dropdownWidth: 60vw;
-
-.page-header, .dropdowns-container, .vehicle-list {
+.app-grid-tile {
   background-color: white;
+}
+
+.mat-grid-list {
+  height: 92vh;
+}
+
+.mat-grid-tile.with-border{
   box-sizing: border-box;
   outline: 4px solid gray;
   outline-offset: -3vh;
-  position: fixed;
   padding: 3vh;
 }
 
-.page-header {
+.header {
   display: flex;
   align-items: center;
-  width: 94vw;
-  height: 18.4vh;
+  width: 100%;
 }
 
 .header--title {
@@ -28,26 +31,27 @@ $dropdownWidth: 60vw;
   margin-right: 2.9vh;
 }
 
-.dropdowns-container {
-  display: flex;
-  height: 75.6vh;
-  top: 22.4vh;
-  width: $dropdownWidth;
-  align-items: center;
-  justify-content: center;
-}
-
 .dropdowns {
   display: flex;
   flex-direction: column;
-  width: 80%;
+}
+
+.list-container {
+  overflow-y: auto;
+  height: 100%;
 }
 
 .vehicle-list {
-  position: fixed;
+  display: flex;
   height: 100%;
-  width: 90vw - $dropdownWidth;
-  top: 22.4vh;
-  left: $dropdownWidth + 6vw;
-  overflow-y: auto;
+  flex-direction: column;
+}
+
+.vehicle-list--item {
+  margin: 1vh 0;
+}
+
+.item-title {
+  font-size: 1.4rem;
+  font-weight: 700;
 }

@@ -1,5 +1,10 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
+html {
+    overflow: hidden;
+    height: 100%;
+}
+
 body {
   background-color: orange;
   margin: 2vh 3vw;
